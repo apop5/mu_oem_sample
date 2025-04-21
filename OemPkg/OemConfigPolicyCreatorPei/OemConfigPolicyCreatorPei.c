@@ -63,6 +63,7 @@ ApplyProfileOverrides (
         return EFI_INVALID_PARAMETER;
       }
 
+      DEBUG ((DEBUG_ERROR, "i = %d\n", i));
       i--;
       for ( ; i > 0; i--) {
         Knob = ActiveProfile->Overrides[i].Knob;
