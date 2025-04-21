@@ -14,17 +14,54 @@
 
 # Maintenance: Keep labels organized in ascending alphabetical order - easier to scan, identify duplicates, etc.
 
-impact:breaking-change:
-  - '\s*-\s*\[\s*[x|X]\s*\] Breaking change\?'
+rules:
+  - name: Backport
+    conditions:
+      - type: regex
+        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Backport to release branch\\?'
+    labels:
+      - type:backport
 
-impact:non-functional:
-  - '\s*-\s*\[\s*(?![x|X])\s*\] Impacts functionality\?'
+  - name: Breaking Change
+    conditions:
+      - type: regex
+        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Breaking change\\?'
+    labels:
+      - impact:breaking-change
 
-impact:security:
-  - '\s*-\s*\[\s*[x|X]\s*\] Impacts security\?'
+  - name: Documentation
+    conditions:
+      - type: regex
+        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes documentation\\?'
+    labels:
+      - type:documentation
 
-impact:testing:
-  - '\s*-\s*\[\s*[x|X]\s*\] Includes tests\?'
+  - name: Non-Functional Impact
+    conditions:
+      - type: regex
+        pattern: '\\s*-\\s*(?![x\nX])\\s*\\] Impacts functionality\\?'
+    labels:
+      - impact:non-functional
 
-type:documentation:
-  - '\s*-\s*\[\s*[x|X]\s*\] Includes documentation\?'
+  - name: Security Impact
+    conditions:
+      - type: regex
+        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Impacts security\\?'
+    labels:
+      - impact:security
+
+  - name: Testing Impact
+    conditions:
+      - type: regex
+        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes tests\\?'
+    labels:
+      - impact:testing
+
+  - name: Auto Backport Filesync, Dependabot
+    type: "pull_request"
+    conditions:
+      - authors: ["dependabot[bot]","mu-automation"]
+      - type: repo
+        pattern: '^(mu_basecore|mu_tiano_plus|mu_silicon_arm_tiano|mu_silicon_intel_tiano|mu_plus|mu_oem_sample)$'
+    labels:
+      - type:backport
