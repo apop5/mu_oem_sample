@@ -37,6 +37,6 @@ labels:
 
   - label: type:backport
     type: "pull_request"
-    authors: ["dependabot[bot]","mu-automation"]
+    authors: ["apop5", "dependabot[bot]","mu-automation"]
     base-branch: "dev/*"
 
