@@ -25,10 +25,10 @@ labels:
 
 
   - label: type:documentation
-      body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes documentation\\?'
+    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes documentation\\?'
 
   - label: impact:non-functional
-      body: '\\s*-\\s*(?![x\nX])\\s*\\] Impacts functionality\\?'
+    body: '\\s*-\\s*(?![x\nX])\\s*\\] Impacts functionality\\?'
 
   - label: impact:security
     body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Impacts security\\?'
