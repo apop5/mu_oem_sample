@@ -38,5 +38,15 @@ labels:
   - label: type:backport
     type: "pull_request"
     authors: ["apop5", "dependabot[bot]", "mu-automation"]
-    base-branch: "dev/20[0-9]{4}"
+    branch : "repo-sync/mu_devops/default"
 
+  - label: type:backport
+    type: "pull_request"
+    authors: ["apop5", "mu-automation"]
+    branch : "repo-sync/mu_devops/default"  
+
+  - label: type:backport
+    type: "pull_request"
+    authors: ["apop5", "dependabot[bot]", "mu-automation"]
+    branch : "dependabot/pip/"  
+    
