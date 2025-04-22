@@ -13,55 +13,31 @@
 # https://github.com/github/issue-labeler
 
 # Maintenance: Keep labels organized in ascending alphabetical order - easier to scan, identify duplicates, etc.
+version: 1
+issues: False
 
-rules:
-  - name: Backport
-    conditions:
-      - type: regex
-        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Backport to release branch\\?'
-    labels:
-      - type:backport
+labels:
+  - label: type:backport
+    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Backport to release branch\\?'
 
-  - name: Breaking Change
-    conditions:
-      - type: regex
-        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Breaking change\\?'
-    labels:
-      - impact:breaking-change
+  - label: impact:breaking-change
+    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Breaking change\\?'
 
-  - name: Documentation
-    conditions:
-      - type: regex
-        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes documentation\\?'
-    labels:
-      - type:documentation
 
-  - name: Non-Functional Impact
-    conditions:
-      - type: regex
-        pattern: '\\s*-\\s*(?![x\nX])\\s*\\] Impacts functionality\\?'
-    labels:
-      - impact:non-functional
+  - label: type:documentation
+      body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes documentation\\?'
 
-  - name: Security Impact
-    conditions:
-      - type: regex
-        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Impacts security\\?'
-    labels:
-      - impact:security
+  - label: impact:non-functional
+      body: '\\s*-\\s*(?![x\nX])\\s*\\] Impacts functionality\\?'
 
-  - name: Testing Impact
-    conditions:
-      - type: regex
-        pattern: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes tests\\?'
-    labels:
-      - impact:testing
+  - label: impact:security
+    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Impacts security\\?'
 
-  - name: Auto Backport Filesync, Dependabot
+  - label: impact:testing
+    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes tests\\?'
+
+  - label: type:backport
     type: "pull_request"
-    conditions:
-      - authors: ["dependabot[bot]","mu-automation"]
-      - type: repo
-        pattern: '^(mu_basecore|mu_tiano_plus|mu_silicon_arm_tiano|mu_silicon_intel_tiano|mu_plus|mu_oem_sample)$'
-    labels:
-      - type:backport
+    authors: ["dependabot[bot]","mu-automation"]
+    base-branch: "dev/*"
+
