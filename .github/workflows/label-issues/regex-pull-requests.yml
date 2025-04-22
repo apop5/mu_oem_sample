@@ -18,23 +18,22 @@ issues: False
 
 labels:
   - label: type:backport
-    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Backport to release branch\\?'
+    body: '\s*\[\s*[x|X]{1}\s*\]\s*Backport to release branch\?'
 
   - label: impact:breaking-change
-    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Breaking change\\?'
-
+    body: '\s*\[\s*[x|X]{1}\s*\]\s*Breaking\s*change\?'
 
   - label: type:documentation
-    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes documentation\\?'
+    body: '\s*\[\s*[x|X]{1}\s*\]\s*Includes\s*documentation\?'
 
   - label: impact:non-functional
-    body: '\\s*-\\s*(?![x\nX])\\s*\\] Impacts functionality\\?'
+    body: '\s*\[\s*\]\s*Impacts\s*functionality\?'
 
   - label: impact:security
-    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Impacts security\\?'
+    body: '\s*\[\s*[x|X]{1}\s*\]\s*Impacts\s*security\?'
 
   - label: impact:testing
-    body: '\\s*-\\s*\\[\\s*[x\nX]\\s*\\] Includes tests\\?'
+    body: '\[\s*[\s*(x|X){1}]\s*\]\s*Includes\s*tests\?'
 
   - label: type:backport
     type: "pull_request"
